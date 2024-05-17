@@ -12,6 +12,7 @@
             margin: 0;
             padding: 0;
             text-align: center;
+            overflow-x: hidden;
         }
         header {
             background-color: #FFCCCB;
@@ -69,6 +70,20 @@
             margin: 10px;
             font-size: 3em;
         }
+        .falling-heart {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 30px;
+            animation: fall 5s linear infinite;
+            z-index: -1;
+        }
+        @keyframes fall {
+            0% { top: -10%; opacity: 1; }
+            100% { top: 110%; opacity: 0; }
+        }
     </style>
 </head>
 <body>
@@ -116,7 +131,13 @@
     </section>
     <script>
         function showLoveMessage() {
-            document.getElementById('heartMessage').style.display = 'block';
+            const heartMessage = document.getElementById('heartMessage');
+            heartMessage.style.display = 'block';
+            setTimeout(() => {
+                heartMessage.style.display = 'none';
+            }, 5000);
+
+            createFallingHearts();
         }
 
         function addPhoto() {
@@ -127,6 +148,21 @@
                 const img = document.createElement('img');
                 img.src = URL.createObjectURL(fileInput.files[0]);
                 gallery.appendChild(img);
+            }
+        }
+
+        function createFallingHearts() {
+            const numberOfHearts = 10;
+            for (let i = 0; i < numberOfHearts; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'falling-heart';
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.animationDuration = `${Math.random() * 2 + 3}s`;
+                heart.textContent = '💖';
+                document.body.appendChild(heart);
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
             }
         }
     </script>
