@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te Amo mi pez</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #FFCCCB;
+            padding: 20px;
+        }
+        header h1 {
+            color: #4CAF50;
+            font-size: 2.5em;
+        }
+        section {
+            padding: 20px;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .gallery img {
+            max-width: 100px;
+            margin: 10px;
+        }
+        .heart {
+            display: none;
+            font-size: 3em;
+            color: red;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 32px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .card {
+            border: 2px solid #FFCCCB;
+            border-radius: 15px;
+            background-color: #fffaf0;
+            padding: 20px;
+            margin: 20px;
+            position: relative;
+        }
+        .card::before {
+            content: '💖';
+            font-size: 5em;
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #FF69B4;
+        }
+        .decoration {
+            display: inline-block;
+            margin: 10px;
+            font-size: 3em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Te Amo mi pez</h1>
+    </header>
+    <section>
+        <p>Eres el amor de mi vida, iluminas mis días y haces brillar mis ojos.</p>
+        <img src="imagen_destacada.jpg" alt="Imagen Destacada">
+    </section>
+    <section>
+        <h2>Nuestros Momentos Juntos</h2>
+        <div class="gallery" id="gallery">
+            <!-- Aquí se agregarán las fotos -->
+        </div>
+        <input type="file" id="fileInput">
+        <button onclick="addPhoto()">Agregar Foto</button>
+    </section>
+    <section>
+        <p>Eres el sentido de mi vida. Te amo con todo mi corazón.</p>
+    </section>
+    <section>
+        <button onclick="showLoveMessage()">Touch Me</button>
+        <div class="heart" id="heartMessage">💖 TE AMO 💖</div>
+    </section>
+    <section>
+        <div class="card">
+            <h2>mi niña Sofi</h2>
+            <p>
+                Mi amor por ti es más grande de lo que las palabras pueden expresar. 
+                Desde el momento en que entraste en mi vida, has iluminado mis días y 
+                has llenado mi corazón de una felicidad indescriptible. Eres mi sol, 
+                mi luna y todas mis estrellas. Gracias por hacer cada día mejor y por 
+                ser la razón de mi sonrisa. Eres mi todo, y prometo amarte siempre, 
+                en cada momento y en cada lugar. Te amo más de lo que puedes imaginar.
+            </p>
+            <p>Con todo mi amor,</p>
+            <p><strong>Vairon</strong></p>
+        </div>
+    </section>
+    <section>
+        <div class="decoration">🐻</div>
+        <div class="decoration">💖</div>
+        <div class="decoration">🌸</div>
+    </section>
+    <script>
+        function showLoveMessage() {
+            document.getElementById('heartMessage').style.display = 'block';
+        }
+
+        function addPhoto() {
+            const fileInput = document.getElementById('fileInput');
+            const gallery = document.getElementById('gallery');
+
+            if (fileInput.files.length > 0) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(fileInput.files[0]);
+                gallery.appendChild(img);
+            }
+        }
+    </script>
+</body>
+</html>
